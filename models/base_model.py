@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a base class for all models in our hbnb clone"""
+"""This is the base model class for AirBnB"""
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
 import models
@@ -18,9 +18,8 @@ class BaseModel:
     created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
     updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
 
-    """A base class for all hbnb models"""
     def __init__(self, *args, **kwargs):
-        """Instatntiates a new model
+        """Instantiation of base model class
         Args:
             args: it won't be used
             kwargs: arguments for the constructor of the BaseModel
@@ -82,3 +81,4 @@ class BaseModel:
         """ delete object
         """
         models.storage.delete(self)
+
