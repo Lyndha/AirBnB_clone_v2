@@ -1,32 +1,21 @@
 #!/usr/bin/python3
-"""compress web_static directory
-into tgz archive
-"""
+'''Fabric script to generate .tgz archive'''
 
-from fabric.operations import local
-import time
+from fabric.api import local
+from datetime import datetime
+
+from fabric.decorators import runs_once
 
 
+@runs_once
 def do_pack():
-    """do_pack
+    '''generates .tgz archive from the contents of the web_static folder'''
+    local("mkdir -p versions")
+    path = ("versions/web_static_{}.tgz"
+            .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
+    result = local("tar -cvzf {} web_static"
+                   .format(path))
 
-    Returns:
-        [string] -- [path to archive]
-    """
-    localtime = time.localtime(time.time())
-    if int(localtime.tm_mon) < 10:
-        curmonth = "0{}".format(localtime.tm_mon)
-    else:
-        curmonth = localtime.tm_mon
-    curtime = "{}{}{}{}{}{}".format(localtime.tm_year,
-                                    curmonth, localtime.tm_mday,
-                                    localtime.tm_hour, localtime.tm_min,
-                                    localtime.tm_sec)
-    local("sudo mkdir -p versions")
-    archivepath = "versions/web_static_{}.tgz".format(curtime)
-    archive = local("tar -cvzf {} web_static/".format(archivepath),
-                    capture=True)
-    if archive:
-        return archive
-    else:
+    if result.failed:
         return None
+    return path
