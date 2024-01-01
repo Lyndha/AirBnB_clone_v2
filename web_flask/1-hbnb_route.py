@@ -1,22 +1,36 @@
 #!/usr/bin/python3
+"""
+Routes Hello
+"""
 from flask import Flask
+import os
 
-# Create a Flask application
+
 app = Flask(__name__)
 
-# Define a route that displays "Hello, Flask!"
-@app.route('/', strict_slashes=False)
-def hello_hbnb():
-    return 'Hello, HBNB'
 
-# Define a route that displays "HBNB"
-@app.route('/', strict_slashes=False)
-def hbnb():
+@app.route('/')
+def hello_world(strict_slashes=False):
+    """
+    Hello World
+
+    Returns:
+        [String] -- [Hello HBNB!]
+    """
+    return 'Hello HBNB!'
+
+
+@app.route('/hbnb')
+def hbnb(strict_slashes=False):
+    """
+    HBNB
+
+    Returns:
+        [String] -- [HBNB]
+    """
     return 'HBNB'
 
-# Run the application if this script is executed
-if __name__ == '__main__':
-    # Use host='0.0.0.0' to make the app accessible from external devices
-    # Use port=5000 as an example; you can choose a different port
-    app.run(host='0.0.0.0', port=5000)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
 
