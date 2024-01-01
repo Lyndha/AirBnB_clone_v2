@@ -33,6 +33,10 @@ class FileStorage:
                 temp[key] = val.to_dict()
             json.dump(temp, f, indent=4)
 
+    def close(self):
+        """update in order to use flask for update"""
+        self.reload()
+
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel

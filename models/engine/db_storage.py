@@ -82,3 +82,7 @@ class DBStorage:
         """ calls remove()
         """
         self.__session.close()
+
+    def close(self):
+        """class method to close current database using flask"""
+        self.session.close()
