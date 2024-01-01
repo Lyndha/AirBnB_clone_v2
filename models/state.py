@@ -20,11 +20,11 @@ class State(BaseModel, Base):
     cities = relationship("City", cascade='all, delete, delete-orphan',
                           backref="state")
 
- @property
-        def cities(self):
-            """ Method that gets cities"""
-            cityList = []
-            for cityV in models.storage.all(City).values():
-                if getattr(cityV, "state_id") == self.id:
-                    cityList.append(cityV)
-            return(cityList)]
+    @property
+    def cities(self):
+        """ Method that gets cities"""
+        cityList = []
+        for cityV in models.storage.all(City).values():
+            if getattr(cityV, "state_id") == self.id:
+                cityList.append(cityV)
+        return(cityList)]
