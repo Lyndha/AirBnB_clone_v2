@@ -3,6 +3,7 @@
 Routes Hello
 """
 from flask import Flask
+from flask import render_template
 import os
 
 
@@ -62,6 +63,28 @@ def pythonwoutpath(strict_slashes=False):
         [String] -- [HBNB]
     """
     return 'Python is cool'
+
+
+@app.route('/number/<int:number>')
+def number(number, strict_slashes=False):
+    """
+    HBNB
+
+    Returns:
+        [String] -- [HBNB]
+    """
+    return "{} is a number".format(number)
+
+
+@app.route('/number_template/<int:number>')
+def numbertemplate(number, strict_slashes=False):
+    """
+    HBNB
+
+    Returns:
+        [String] -- [HBNB]
+    """
+    return render_template('5-number.html', number=number)
 
 
 if __name__ == "__main__":
