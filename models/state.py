@@ -7,6 +7,7 @@ from sqlalchemy import Column, Integer, String
 import models
 from models.city import City
 import shlex
+from os import getenv
 
 
 class State(BaseModel, Base):
@@ -33,3 +34,7 @@ class State(BaseModel, Base):
             if (elem.state_id == self.id):
                 result.append(elem)
         return (result)
+        from models import storage
+        all_cities = storage.all(City)
+        return [city for city in all_cities.values()
+                if city.state_id == self.if]
