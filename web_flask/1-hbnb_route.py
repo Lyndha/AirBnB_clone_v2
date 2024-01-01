@@ -5,12 +5,12 @@ from flask import Flask
 app = Flask(__name__)
 
 # Define a route that displays "Hello, Flask!"
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def hello_flask():
     return 'Hello, Flask!'
 
 # Define a route that displays "HBNB"
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def hbnb():
     return 'HBNB'
 
