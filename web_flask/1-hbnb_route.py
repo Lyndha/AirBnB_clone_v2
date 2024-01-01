@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # Define a route that displays "Hello, Flask!"
 @app.route('/', strict_slashes=False)
-def hello_flask():
-    return 'Hello, Flask!'
+def hello_hbnb():
+    return 'Hello, HBNB'
 
 # Define a route that displays "HBNB"
 @app.route('/', strict_slashes=False)
