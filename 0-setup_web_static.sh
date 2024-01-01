@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script that sets up your web servers for the deployment of web_static
+# Script that sets up yourweb_static_20231224143233.tgz web servers for the deployment of web_static
 
 # Install Nginx if it not already installed
 if ! nginx -v; then
